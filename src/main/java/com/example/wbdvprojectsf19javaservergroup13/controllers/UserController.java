@@ -3,6 +3,8 @@ package com.example.wbdvprojectsf19javaservergroup13.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,20 +18,34 @@ import com.example.wbdvprojectsf19javaservergroup13.models.User;
 import com.example.wbdvprojectsf19javaservergroup13.services.UserService;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(allowCredentials = "true")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping("/api/users")
-	public void createUser(@RequestBody User user) {
-		userService.createUser(user);
+	@PostMapping("/register")
+	public User register(@RequestBody User user, HttpSession session) {
+		User currentUser =  userService.register(user);
+		session.setAttribute("current user", currentUser);
+		return currentUser;
 	}
 	
-	@PutMapping("/api/users")
-	public User findUserByCredentials(@RequestBody User user) {
-		return userService.findUserByCredentials(user);
+	@GetMapping("/checkLogin")
+	public User checkLogin(HttpSession session) {	
+		return (User)session.getAttribute("current user");
+	}
+	
+	@PostMapping("/login")
+	public User findUserByCredentials(@RequestBody User user, HttpSession session) {
+		User currentUser= userService.findUserByCredentials(user); 
+		session.setAttribute("current user", currentUser);
+		return currentUser; 
+	}
+	
+	@GetMapping("/logout")
+	public void logout(HttpSession session) {
+		session.invalidate();
 	}
 	
 	@GetMapping("/api/users/{id}")
