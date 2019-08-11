@@ -53,8 +53,8 @@ public class AnalysisController {
 	}
 	
 	@DeleteMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis/{aid}")
-	public Analysis deleteAnalysis( @PathVariable("aid") int aid) {
+	public void deleteAnalysis( @PathVariable("aid") int aid) {
 		
-		return service.deleteAnalysis(aid);
+		service.deleteAnalysis(aid);
 	}
 }
