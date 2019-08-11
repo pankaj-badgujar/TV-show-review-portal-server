@@ -3,10 +3,12 @@ package com.example.wbdvprojectsf19javaservergroup13.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.wbdvprojectsf19javaservergroup13.models.Analysis;
 import com.example.wbdvprojectsf19javaservergroup13.repositories.AnalysisRepository;
 
+@Service
 public class AnalysisService {
 
 	@Autowired

@@ -29,8 +29,7 @@ public class Episode {
 		this.showId = showId;
 	}
 
-	@OneToMany
-	@JsonIgnore
+	@OneToMany(mappedBy= "episode")
 	private List<Analysis> analyses;
 	
 //	@ManyToOne(mappedBy="episode")
