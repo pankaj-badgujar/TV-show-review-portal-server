@@ -33,13 +33,13 @@ public class AnalysisController {
 		
 		return service.getStudentAnalysisList(userId, showId, eid);
 	}
-	
-	@GetMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis")
-	public List<Analysis> getAnalysisForProfessor(@PathVariable("userid") int userId, @PathVariable("showid") int showId, @PathVariable("eid") int eid) {
-		
-		return service.getAnalysisListForProfessor(userId, showId, eid);
-	}
-	
+//
+//	@GetMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis")
+//	public List<Analysis> getAnalysisForProfessor(@PathVariable("userid") int userId, @PathVariable("showid") int showId, @PathVariable("eid") int eid) {
+//
+//		return service.getAnalysisListForProfessor(userId, showId, eid);
+//	}
+//
 	@GetMapping("/api/user/{userid}/analysis") 
 	public List<Analysis> getAllAnalysisForStudent(@PathVariable("userid") int userid) {
 		
@@ -53,8 +53,8 @@ public class AnalysisController {
 	}
 	
 	@DeleteMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis/{aid}")
-	public Analysis deleteAnalysis( @PathVariable("aid") int aid) {
+	public void deleteAnalysis( @PathVariable("aid") int aid) {
 		
-		return service.deleteAnalysis(aid);
+		 service.deleteAnalysis(aid);
 	}
 }

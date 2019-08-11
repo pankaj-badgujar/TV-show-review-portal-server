@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +27,9 @@ public class Student {
 
   @OneToMany(mappedBy = "student")
   private List<Analysis> analysisList;
+
+  @OneToOne
+  private User user;
 
   public int getId() {
     return id;
@@ -49,5 +53,13 @@ public class Student {
 
   public void setAnalysisList(List<Analysis> analysisList) {
     this.analysisList = analysisList;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 }

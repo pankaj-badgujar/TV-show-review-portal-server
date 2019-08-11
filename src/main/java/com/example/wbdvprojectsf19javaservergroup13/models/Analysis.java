@@ -21,8 +21,8 @@ public class Analysis {
 	@ManyToOne
 	@JsonIgnore
 	private Episode episode;
-	
-	@OneToMany
+
+	@ManyToOne
 	@JsonIgnore
 	private Student student;
 

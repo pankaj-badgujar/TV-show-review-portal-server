@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,6 +22,10 @@ public class Review {
 	@OneToOne
 	@JsonIgnore
 	private Analysis analysis;
+
+	@ManyToOne
+	@JsonIgnore
+	private Faculty faculty;
 
 	public Review(int id, float grade) {
 		super();
@@ -61,5 +66,13 @@ public class Review {
 		this.grade = review.grade;
 		this.analysis = review.analysis;
 		return this;
+	}
+
+	public Faculty getFaculty() {
+		return faculty;
+	}
+
+	public void setFaculty(Faculty faculty) {
+		this.faculty = faculty;
 	}
 }
