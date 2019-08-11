@@ -17,10 +17,10 @@ public class User {
 	private String password;
 	private Role role;
 	
-	
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -28,17 +28,18 @@ public class User {
 	public String getFirstName() {
 		return firstName;
 	}
+	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
 	public String getLastName() {
 		return lastName;
 	}
+	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	
 	
 	public String getUsername() {
 		return username;
@@ -59,5 +60,4 @@ public class User {
 		this.role = role;
 	}
 	
-
 }
