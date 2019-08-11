@@ -42,6 +42,6 @@ public class AnalysisService {
 	
 	public void deleteAnalysis(int aid) {
 		
-		return repo.delete(repo.findAnalysisById(aid));
+		repo.delete(repo.findAnalysisById(aid));
 	}
 }
