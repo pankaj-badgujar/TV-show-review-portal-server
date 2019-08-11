@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,9 +17,44 @@ public class Faculty {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  @OneToMany(mappedBy = "faculty")
   private List<Student> studentList;
 
   private User user;
 
+  @OneToMany(mappedBy = "faculty")
+  private List<Review> reviewList;
 
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public List<Student> getStudentList() {
+    return studentList;
+  }
+
+  public void setStudentList(List<Student> studentList) {
+    this.studentList = studentList;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public List<Review> getReviewList() {
+    return reviewList;
+  }
+
+  public void setReviewList(List<Review> reviewList) {
+    this.reviewList = reviewList;
+  }
 }
