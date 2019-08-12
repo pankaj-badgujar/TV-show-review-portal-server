@@ -16,15 +16,15 @@ import com.example.wbdvprojectsf19javaservergroup13.models.Analysis;
 import com.example.wbdvprojectsf19javaservergroup13.services.AnalysisService;
 
 @RestController
-@CrossOrigin(allowCredentials = "true")
+@CrossOrigin("*")
 public class AnalysisController {
 
 	@Autowired
 	private AnalysisService service;
 	
-	@PostMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis")
+//	@PostMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis")
+	@PostMapping("/api/episode/{eid}/analysis")
 	public Analysis createAnalysis(@RequestBody Analysis analysis) {
-		
 		return service.createAnalysis(analysis);
 	}
 	
@@ -55,10 +55,6 @@ public class AnalysisController {
 	@DeleteMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis/{aid}")
 	public void deleteAnalysis( @PathVariable("aid") int aid) {
 		
-<<<<<<< HEAD
 		service.deleteAnalysis(aid);
-=======
-		 service.deleteAnalysis(aid);
->>>>>>> f17e6c727cd7c8fcdc971a0921e56ab75ece4632
 	}
 }
