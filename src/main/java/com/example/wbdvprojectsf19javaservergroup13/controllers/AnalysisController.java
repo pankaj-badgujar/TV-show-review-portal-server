@@ -54,11 +54,7 @@ public class AnalysisController {
 	
 	@DeleteMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis/{aid}")
 	public void deleteAnalysis( @PathVariable("aid") int aid) {
-		
-<<<<<<< HEAD
+
 		service.deleteAnalysis(aid);
-=======
-		 service.deleteAnalysis(aid);
->>>>>>> f17e6c727cd7c8fcdc971a0921e56ab75ece4632
 	}
 }
