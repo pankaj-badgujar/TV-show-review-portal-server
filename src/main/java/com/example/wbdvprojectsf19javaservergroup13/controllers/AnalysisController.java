@@ -22,16 +22,15 @@ public class AnalysisController {
 	@Autowired
 	private AnalysisService service;
 	
-//	@PostMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis")
-	@PostMapping("/api/episode/{eid}/analysis")
-	public Analysis createAnalysis(@RequestBody Analysis analysis) {
-		return service.createAnalysis(analysis);
+	@PostMapping("/api/user/{userId}/episode/{eid}/analysis")
+	public Analysis createAnalysis(@PathVariable("userId") int userId, 
+			@PathVariable("eid") int episodeId, @RequestBody Analysis analysis) {
+		return service.createAnalysis(userId,episodeId,analysis);
 	}
 	
-	@GetMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis")
-	public Analysis getAnalysisForStudent(@PathVariable("userid") int userId, @PathVariable("showid") int showId, @PathVariable("eid") int eid) {
-		
-		return service.getStudentAnalysisList(userId, showId, eid);
+	@GetMapping("/api/user/{userid}/episode/{eid}/analysis")
+	public List<Analysis> getAnalysisForStudent(@PathVariable("userid") int userId, @PathVariable("eid") int eid) {
+		return service.getStudentAnalysisList(userId, eid);
 	}
 //
 //	@GetMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis")
@@ -40,11 +39,7 @@ public class AnalysisController {
 //		return service.getAnalysisListForProfessor(userId, showId, eid);
 //	}
 //
-	@GetMapping("/api/user/{userid}/analysis") 
-	public List<Analysis> getAllAnalysisForStudent(@PathVariable("userid") int userid) {
-		
-		return service.getAllAnalysisForStudentId(userid);
-	}
+
 	
 	@PutMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis/{aid}")
 	public Analysis updateAnalysis(@RequestBody Analysis analysis, @PathVariable("aid") int aid) {
@@ -56,5 +51,16 @@ public class AnalysisController {
 	public void deleteAnalysis( @PathVariable("aid") int aid) {
 		
 		service.deleteAnalysis(aid);
+	}
+	
+	@GetMapping("/api/analysis")
+	public List<Analysis> getAllAnalysis() {
+		return service.getAllAnalysis();
+	}
+	
+	@GetMapping("/api/episode/{episodeId}/analysis")
+	public List<Analysis> getAllAnalysisForEpisode(@PathVariable("episodeId") int episodeId){
+		return service.getAllAnalysisForEpisode(episodeId);
+		
 	}
 }

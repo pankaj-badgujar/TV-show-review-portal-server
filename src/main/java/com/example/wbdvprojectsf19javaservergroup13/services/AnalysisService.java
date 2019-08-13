@@ -6,44 +6,67 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.wbdvprojectsf19javaservergroup13.models.Analysis;
+import com.example.wbdvprojectsf19javaservergroup13.models.Episode;
+import com.example.wbdvprojectsf19javaservergroup13.models.Student;
 import com.example.wbdvprojectsf19javaservergroup13.repositories.AnalysisRepository;
+import com.example.wbdvprojectsf19javaservergroup13.repositories.EpisodeRepository;
+import com.example.wbdvprojectsf19javaservergroup13.repositories.StudentRepository;
 
 @Service
 public class AnalysisService {
 
 	@Autowired
-	private AnalysisRepository repo;
+	private AnalysisRepository analysisRepository;
 	
-	public Analysis createAnalysis(Analysis analysis) {
+	@Autowired
+	private StudentRepository studentRepository;
+	
+	@Autowired
+	private EpisodeRepository episodeRepository;
+	
+	public Analysis createAnalysis(int userId, int episodeId, Analysis analysis) {
 		
-		return repo.save(analysis);
+		Episode episode = episodeRepository.findById(episodeId).get();
+		Student student  = studentRepository.findStudentByUserId(userId);
+		analysis.setEpisode(episode);
+		analysis.setStudent(student);
+		return analysisRepository.save(analysis);
 	}
 	
-	public Analysis getStudentAnalysisList(int userId, int showId, int eid) {
+	public List<Analysis> getStudentAnalysisList(int userId, int eid) {
 		
-		return repo.getAnalysisForStudent(userId,showId,eid);
+		Student student = studentRepository.findStudentByUserId(userId);
+		return analysisRepository.getAnalysisForStudent(student.getId(),eid);
 	}
 	
 	public List<Analysis> getAnalysisListForProfessor(int userId, int showId, int eid) {
 		
-		return repo.getAnalysisListForProfessor(userId,showId,eid);
+		return analysisRepository.getAnalysisListForProfessor(userId,showId,eid);
 	}
 	
 	public List<Analysis> getAllAnalysisForStudentId(int uid) {
 		
-		return repo.getAllAnalysisForStudentId(uid);
+		return analysisRepository.getAllAnalysisForStudentId(uid);
 	}
 	
 	public Analysis updateAnalysis(Analysis analysis, int aid) {
 		
-		Analysis old = repo.findAnalysisById(aid);
+		Analysis old = analysisRepository.findAnalysisById(aid);
 		old.set(analysis);
-		repo.save(old);
-		return repo.findAnalysisById(aid);
+		analysisRepository.save(old);
+		return analysisRepository.findAnalysisById(aid);
 	}
 	
 	public void deleteAnalysis(int aid) {
 		
-		repo.delete(repo.findAnalysisById(aid));
+		analysisRepository.delete(analysisRepository.findAnalysisById(aid));
+	}
+
+	public List<Analysis> getAllAnalysis() {
+		return analysisRepository.getAllAnalysis();
+	}
+
+	public List<Analysis> getAllAnalysisForEpisode(int episodeId) {
+		return analysisRepository.getAllAnalysisForEpisode(episodeId);
 	}
 }
