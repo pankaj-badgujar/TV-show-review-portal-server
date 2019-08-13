@@ -33,4 +33,15 @@ public class UserService {
 		return userRepository.findAllUsers();
 	}
 
+	public User updateUser(int userId, User user) {
+		User userToBeUpdated = userRepository.findById(userId).get();
+		userToBeUpdated.setFirstName(user.getFirstName());
+		userToBeUpdated.setLastName(user.getLastName());
+		userToBeUpdated.setUsername(user.getUsername());
+		userToBeUpdated.setPassword(user.getPassword());
+		
+		userRepository.save(userToBeUpdated);
+		return userToBeUpdated;
+	}
+
 }
