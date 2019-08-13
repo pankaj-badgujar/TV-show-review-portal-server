@@ -33,9 +33,10 @@ public class AnalysisService {
 		return analysisRepository.save(analysis);
 	}
 	
-	public Analysis getStudentAnalysisList(int userId, int showId, int eid) {
+	public List<Analysis> getStudentAnalysisList(int userId, int eid) {
 		
-		return analysisRepository.getAnalysisForStudent(userId,showId,eid);
+		Student student = studentRepository.findStudentByUserId(userId);
+		return analysisRepository.getAnalysisForStudent(student.getId(),eid);
 	}
 	
 	public List<Analysis> getAnalysisListForProfessor(int userId, int showId, int eid) {
@@ -63,5 +64,9 @@ public class AnalysisService {
 
 	public List<Analysis> getAllAnalysis() {
 		return analysisRepository.getAllAnalysis();
+	}
+
+	public List<Analysis> getAllAnalysisForEpisode(int episodeId) {
+		return analysisRepository.getAllAnalysisForEpisode(episodeId);
 	}
 }

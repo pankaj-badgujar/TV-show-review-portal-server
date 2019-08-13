@@ -28,10 +28,9 @@ public class AnalysisController {
 		return service.createAnalysis(userId,episodeId,analysis);
 	}
 	
-	@GetMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis")
-	public Analysis getAnalysisForStudent(@PathVariable("userid") int userId, @PathVariable("showid") int showId, @PathVariable("eid") int eid) {
-		
-		return service.getStudentAnalysisList(userId, showId, eid);
+	@GetMapping("/api/user/{userid}/episode/{eid}/analysis")
+	public List<Analysis> getAnalysisForStudent(@PathVariable("userid") int userId, @PathVariable("eid") int eid) {
+		return service.getStudentAnalysisList(userId, eid);
 	}
 //
 //	@GetMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis")
@@ -40,11 +39,7 @@ public class AnalysisController {
 //		return service.getAnalysisListForProfessor(userId, showId, eid);
 //	}
 //
-	@GetMapping("/api/user/{userid}/analysis") 
-	public List<Analysis> getAllAnalysisForStudent(@PathVariable("userid") int userid) {
-		
-		return service.getAllAnalysisForStudentId(userid);
-	}
+
 	
 	@PutMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis/{aid}")
 	public Analysis updateAnalysis(@RequestBody Analysis analysis, @PathVariable("aid") int aid) {
@@ -63,5 +58,9 @@ public class AnalysisController {
 		return service.getAllAnalysis();
 	}
 	
-	
+	@GetMapping("/api/episode/{episodeId}/analysis")
+	public List<Analysis> getAllAnalysisForEpisode(@PathVariable("episodeId") int episodeId){
+		return service.getAllAnalysisForEpisode(episodeId);
+		
+	}
 }
