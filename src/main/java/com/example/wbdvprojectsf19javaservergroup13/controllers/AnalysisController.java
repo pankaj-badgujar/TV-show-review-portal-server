@@ -22,10 +22,10 @@ public class AnalysisController {
 	@Autowired
 	private AnalysisService service;
 	
-//	@PostMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis")
-	@PostMapping("/api/episode/{eid}/analysis")
-	public Analysis createAnalysis(@RequestBody Analysis analysis) {
-		return service.createAnalysis(analysis);
+	@PostMapping("/api/user/{userId}/episode/{eid}/analysis")
+	public Analysis createAnalysis(@PathVariable("userId") int userId, 
+			@PathVariable("eid") int episodeId, @RequestBody Analysis analysis) {
+		return service.createAnalysis(userId,episodeId,analysis);
 	}
 	
 	@GetMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis")
@@ -57,4 +57,11 @@ public class AnalysisController {
 		
 		service.deleteAnalysis(aid);
 	}
+	
+	@GetMapping("/api/analysis")
+	public List<Analysis> getAllAnalysis() {
+		return service.getAllAnalysis();
+	}
+	
+	
 }

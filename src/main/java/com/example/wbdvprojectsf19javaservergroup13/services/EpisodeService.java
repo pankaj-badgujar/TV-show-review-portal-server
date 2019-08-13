@@ -16,4 +16,8 @@ public class EpisodeService {
 		
 		return repo.save(episode);
 	}
+
+	public Episode getEpisodeById(int episodeId) {
+		return repo.findById(episodeId).get();
+	}
 }

@@ -22,4 +22,7 @@ public interface AnalysisRepository extends CrudRepository<Analysis, Integer> {
 	
 	@Query("select analysis From Analysis analysis where analysis.student.id=:sid AND analysis.episode.id=:eid AND analysis.episode.showId=:showid")
 	public List<Analysis> getAnalysisListForProfessor(@Param("sid") Integer sid,@Param("showid") Integer showid,@Param("eid") Integer eid);
+
+	@Query("select analysis from Analysis analysis")
+	public List<Analysis> getAllAnalysis();
 }
