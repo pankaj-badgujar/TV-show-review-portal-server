@@ -17,14 +17,14 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 @RestController
-@CrossOrigin(allowCredentials = "true")
+@CrossOrigin("*")
 public class FacultyController {
 
   @Autowired
   private FacultyService facultyService;
 
   @PostMapping("/registerFaculty")
-  public void register(@RequestBody Faculty faculty, HttpSession session) {
+  public void register(@RequestBody Faculty faculty) {
     facultyService.registerFaculty(faculty);
   }
 
@@ -38,8 +38,10 @@ public class FacultyController {
     return facultyService.findFacultyById(fid);
   }
 
-  @GetMapping("/findFaculty")
-  public Faculty findFacultyByUser(@RequestBody User user){
-    return facultyService.findFacultyByUser(user);
+  @GetMapping("/findFacultyByUserId/{userId}")
+  public Faculty findFacultyByUser(@PathVariable("userId") int userId){
+    return facultyService.findFacultyByUser(userId);
   }
+  
+  
 }

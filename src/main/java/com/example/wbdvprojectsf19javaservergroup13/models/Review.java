@@ -32,6 +32,7 @@ public class Review {
 		this.id = id;
 		this.grade = grade;
 	}
+	
 
 	public int getId() {
 		return id;

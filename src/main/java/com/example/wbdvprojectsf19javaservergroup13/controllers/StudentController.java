@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
-
 @RestController
 @CrossOrigin(allowCredentials = "true")
 public class StudentController {

@@ -11,15 +11,15 @@ import com.example.wbdvprojectsf19javaservergroup13.repositories.EpisodeReposito
 import com.example.wbdvprojectsf19javaservergroup13.services.EpisodeService;
 
 @RestController
-@CrossOrigin(allowCredentials = "true")
+@CrossOrigin("*")
 public class EpisodeController {
 
 	@Autowired
 	private EpisodeService service;
 	
-	@PostMapping("/api/user/{userid}/tvshow/{showid}/episode")
+//	@PostMapping("/api/user/{userid}/tvshow/{showid}/episode")
+	@PostMapping("/api/episode")
 	public Episode addEpisode(@RequestBody Episode episode) {
-		
 		return service.createEpisode(episode);
 	}
 	
