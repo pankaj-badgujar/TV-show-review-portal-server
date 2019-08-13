@@ -18,7 +18,7 @@ import com.example.wbdvprojectsf19javaservergroup13.models.User;
 import com.example.wbdvprojectsf19javaservergroup13.services.UserService;
 
 @RestController
-@CrossOrigin(allowCredentials = "true")
+@CrossOrigin("*")
 public class UserController {
 	
 	@Autowired
@@ -44,6 +44,11 @@ public class UserController {
 	@GetMapping("/api/users")
 	public List<User> findAllUsers(){
 		return userService.findAllUsers();
+	}
+	
+	@PutMapping("/api/users/{userId}")
+	public User updateUser(@PathVariable("userId") int userId, @RequestBody User user) {
+		return userService.updateUser(userId,user);
 	}
 
 }
