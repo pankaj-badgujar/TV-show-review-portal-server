@@ -74,7 +74,7 @@ public class AnalysisController {
 //		return service.getLatestAnalysis();
 //	}
 
-	@GetMapping("api/user/analysedAhowIds/{sid}")
+	@GetMapping("api/user/analysedShowIds/{sid}")
 	public List<Show> getAnalysedShows(@PathVariable("sid") int sid){
 		return service.getAnalysedShows(sid);
 		}

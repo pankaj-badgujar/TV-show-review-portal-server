@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(allowCredentials = "true")
+@CrossOrigin("*")
 public class StudentController {
 
   @Autowired
@@ -41,5 +41,10 @@ public class StudentController {
   @GetMapping("/findStudent")
   public Student findFacultyByUser(@RequestBody User user){
     return studentService.findStudentByUser(user);
+  }
+  
+  @GetMapping("/findFacultyOfStudent/{userId}")
+  public   Faculty findFacultyByUserIdOfStudent(@PathVariable("userId") Integer userId){
+    return studentService.findFacultyByUserIdOfStudent(userId);
   }
 }
