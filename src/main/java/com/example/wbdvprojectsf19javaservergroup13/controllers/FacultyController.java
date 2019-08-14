@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
 
 @RestController
 @CrossOrigin("*")
