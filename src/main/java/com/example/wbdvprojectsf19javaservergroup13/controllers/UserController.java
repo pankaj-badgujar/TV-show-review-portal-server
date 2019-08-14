@@ -18,7 +18,7 @@ import com.example.wbdvprojectsf19javaservergroup13.models.User;
 import com.example.wbdvprojectsf19javaservergroup13.services.UserService;
 
 @RestController
-@CrossOrigin(allowCredentials = "true")
+@CrossOrigin("*")
 public class UserController {
 	
 	@Autowired
@@ -26,27 +26,15 @@ public class UserController {
 	
 	@PostMapping("/register")
 	public User register(@RequestBody User user, HttpSession session) {
-		User currentUser =  userService.register(user);
-		session.setAttribute("current user", currentUser);
-		return currentUser;
+		return userService.register(user);
 	}
-	
-	@GetMapping("/checkLogin")
-	public User checkLogin(HttpSession session) {	
-		return (User)session.getAttribute("current user");
-	}
+
 	
 	@PostMapping("/login")
-	public User findUserByCredentials(@RequestBody User user, HttpSession session) {
-		User currentUser= userService.findUserByCredentials(user); 
-		session.setAttribute("current user", currentUser);
-		return currentUser; 
+	public User findUserByCredentials(@RequestBody User user) {
+		return userService.findUserByCredentials(user); 
 	}
 	
-	@GetMapping("/logout")
-	public void logout(HttpSession session) {
-		session.invalidate();
-	}
 	
 	@GetMapping("/api/users/{id}")
 	public User findUserById(@PathVariable("id") int id) {
@@ -56,6 +44,11 @@ public class UserController {
 	@GetMapping("/api/users")
 	public List<User> findAllUsers(){
 		return userService.findAllUsers();
+	}
+	
+	@PutMapping("/api/users/{userId}")
+	public User updateUser(@PathVariable("userId") int userId, @RequestBody User user) {
+		return userService.updateUser(userId,user);
 	}
 
 }

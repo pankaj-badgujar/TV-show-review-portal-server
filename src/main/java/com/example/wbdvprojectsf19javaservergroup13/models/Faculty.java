@@ -1,6 +1,5 @@
 package com.example.wbdvprojectsf19javaservergroup13.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 

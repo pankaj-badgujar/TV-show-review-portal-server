@@ -28,7 +28,7 @@ public class FacultyService {
     return facultyRepository.findFacultyById(id);
   }
 
-  public Faculty findFacultyByUser(User user){
-    return facultyRepository.findFacultyByUser(user);
+  public Faculty findFacultyByUser(int userId){
+    return facultyRepository.findFacultyByUser(userId);
   }
 }

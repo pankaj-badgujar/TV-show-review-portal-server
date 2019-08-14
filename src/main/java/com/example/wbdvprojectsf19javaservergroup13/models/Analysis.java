@@ -1,5 +1,8 @@
 package com.example.wbdvprojectsf19javaservergroup13.models;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +11,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,6 +32,11 @@ public class Analysis {
 	
 	@ManyToOne
 	private Episode episode;
+	
+	@CreationTimestamp
+	@Temporal(TemporalType.DATE)
+	@Column(name = "submitted")
+	private Date dateOfSubmission;
 
 	@ManyToOne
 	@JsonIgnore
@@ -74,6 +87,22 @@ public class Analysis {
 	public Episode getEpisode() {
 		return episode;
 	}
+	
+	@Transient
+	public int getEpisodeId() {
+		return episode.getId();
+	}
+	
+	@Transient
+	public int getUserIdOfStudent() {
+		return student.getUser().getId();
+	}
+	
+	@Transient
+	public String getStudentsFullName() {
+		return student.getUser().getFirstName()+ " " + student.getUser().getLastName();
+	}
+
 
 	public void setEpisode(Episode episode) {
 		this.episode = episode;
@@ -87,6 +116,7 @@ public class Analysis {
 		this.content = content;
 	}
 
+
 	public Show getShow() {
 		return show;
 	}
@@ -94,4 +124,16 @@ public class Analysis {
 	public void setShow(Show show) {
 		this.show = show;
 	}
+
+	
+
+	public Date getDateOfSubmission() {
+		return dateOfSubmission;
+	}
+
+	public void setDateOfSubmission(Date dateOfSubmission) {
+		this.dateOfSubmission = dateOfSubmission;
+	}
+
+
 }
