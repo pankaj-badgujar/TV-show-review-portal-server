@@ -1,9 +1,6 @@
 package com.example.wbdvprojectsf19javaservergroup13.controllers;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -74,7 +71,7 @@ public class AnalysisController {
 //		return service.getLatestAnalysis();
 //	}
 
-	@GetMapping("api/user/analysedAhowIds/{sid}")
+	@GetMapping("api/user/analysedShowIds/{sid}")
 	public List<Show> getAnalysedShows(@PathVariable("sid") int sid){
 		return service.getAnalysedShows(sid);
 		}
