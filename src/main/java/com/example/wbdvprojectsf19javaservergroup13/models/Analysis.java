@@ -6,9 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name="analyses")
@@ -19,7 +23,6 @@ public class Analysis {
 	private int id;
 	
 	@ManyToOne
-	@JsonIgnore
 	private Episode episode;
 
 	@ManyToOne
@@ -36,14 +39,19 @@ public class Analysis {
 
 	private String content;
 
+	@OneToOne
+	private Show show;
+
 	public Analysis(int id, String content) {
 		super();
 		this.id = id;
 		this.content = content;
+
 	}
 
 	public Analysis() {
 		super();
+
 	}
 	
 	public Analysis set(Analysis analysis) {
@@ -51,6 +59,7 @@ public class Analysis {
 		this.content = analysis.content;
 		this.episode = analysis.episode;
 		this.student = analysis.student;
+
 		return this;
 	}
 
@@ -77,6 +86,12 @@ public class Analysis {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
+
+	public Show getShow() {
+		return show;
+	}
+
+	public void setShow(Show show) {
+		this.show = show;
+	}
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.wbdvprojectsf19javaservergroup13.models.Analysis;
+import com.example.wbdvprojectsf19javaservergroup13.models.Show;
 import com.example.wbdvprojectsf19javaservergroup13.repositories.AnalysisRepository;
 
 @Service
@@ -45,5 +46,13 @@ public class AnalysisService {
 	public void deleteAnalysis(int aid) {
 		
 		repo.delete(repo.findAnalysisById(aid));
+	}
+
+//  public List<Analysis> getLatestAnalysis(){
+//		return repo.getLatestAnalysis();
+//	}
+
+	public List<Show> getAnalysedShows(int sid){
+		return repo.getAllShowForStudentId(sid);
 	}
 }
