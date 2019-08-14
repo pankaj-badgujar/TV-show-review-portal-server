@@ -38,7 +38,7 @@ public class ReviewController {
 		return service.updateReview(review, id);
 	}
 	
-	@GetMapping("/api/faculty/fid/analysis/aid/review")
+	@GetMapping("/api/faculty/{fid}/analysis/{aid}/review")
 	public Review getReviewForAnalysisByFaculty(@PathVariable("fid") int fid, @PathVariable("aid") int aid) {
 		
 		return service.getReviewForAnalysisByFaculty(fid, aid);

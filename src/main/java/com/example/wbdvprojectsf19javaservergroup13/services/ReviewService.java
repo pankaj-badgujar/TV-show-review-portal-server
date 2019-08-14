@@ -31,9 +31,16 @@ public class ReviewService {
 		
 		Analysis analysis = arepo.findAnalysisById(aid);
 		Faculty faculty = frepo.findFacultyById(fid);
+		System.out.print(analysis);
+		System.out.print(faculty);
+		if (analysis != null && faculty != null) {
 		review.setAnalysis(analysis);
 		review.setFaculty(faculty);
 		return repo.save(review);
+		}
+		else {
+			return null;
+		}
 	}
 	
 	public Review getReviewById(int rid) {
