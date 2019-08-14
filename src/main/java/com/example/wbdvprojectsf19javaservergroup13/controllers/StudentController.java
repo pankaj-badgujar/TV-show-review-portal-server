@@ -42,4 +42,9 @@ public class StudentController {
   public Student findFacultyByUser(@RequestBody User user){
     return studentService.findStudentByUser(user);
   }
+  
+  @GetMapping("/findFacultyOfStudent/{userId}")
+  public   Faculty findFacultyByUserIdOfStudent(@PathVariable("userId") Integer userId){
+    return studentService.findFacultyByUserIdOfStudent(userId);
+  }
 }
