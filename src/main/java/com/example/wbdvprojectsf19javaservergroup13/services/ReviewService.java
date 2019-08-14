@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.example.wbdvprojectsf19javaservergroup13.models.Analysis;
 import com.example.wbdvprojectsf19javaservergroup13.models.Faculty;
 import com.example.wbdvprojectsf19javaservergroup13.models.Review;
+import com.example.wbdvprojectsf19javaservergroup13.models.Show;
 import com.example.wbdvprojectsf19javaservergroup13.repositories.AnalysisRepository;
 import com.example.wbdvprojectsf19javaservergroup13.repositories.FacultyRepository;
 import com.example.wbdvprojectsf19javaservergroup13.repositories.ReviewRepository;
@@ -64,5 +65,18 @@ public class ReviewService {
 	public void deleteReview(int rid) {
 		
 		repo.delete(repo.findReviewsById(rid));
+	}
+
+	public List<Show> getShowsReviewdByFaculty(int fid) {
+
+		return repo.getAnalysisReviewdByFaculty(fid);
+	}
+
+	public List<Show> getShowsToBeReviewdByFaculty(int fid){
+		List<Show> showAnalysisList = arepo.getAllAnalysisByFaculty(fid);
+		List<Show> showAnlysedList = repo.getAnalysisReviewdByFaculty(fid);
+
+		showAnalysisList.removeAll(showAnlysedList);
+		return showAnalysisList;
 	}
 }

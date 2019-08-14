@@ -88,20 +88,20 @@ public class Analysis {
 		return episode;
 	}
 	
-//	@Transient
-//	public int getEpisodeId() {
-//		return episode.getId();
-//	}
-//	
-//	@Transient
-//	public int getUserIdOfStudent() {
-//		return student.getUser().getId();
-//	}
+	@Transient
+	public int getEpisodeId() {
+		return episode.getId();
+	}
 	
-//	@Transient
-//	public String getStudentsFullName() {
-//		return student.getUser().getFirstName()+ " " + student.getUser().getLastName();
-//	}
+	@Transient
+	public int getUserIdOfStudent() {
+		return student.getUser().getId();
+	}
+	
+	@Transient
+	public String getStudentsFullName() {
+		return student.getUser().getFirstName()+ " " + student.getUser().getLastName();
+	}
 
 
 	public void setEpisode(Episode episode) {

@@ -1,9 +1,6 @@
 package com.example.wbdvprojectsf19javaservergroup13.controllers;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,10 +23,11 @@ public class AnalysisController {
 	@Autowired
 	private AnalysisService service;
 	
-	@PostMapping("/api/user/{userId}/episode/{eid}/analysis")
-	public Analysis createAnalysis(@PathVariable("userId") int userId, 
+	@PostMapping("/api/user/{userId}/show/{showId}/episode/{eid}/analysis")
+	public Analysis createAnalysis(@PathVariable("userId") int userId,
+			@PathVariable("showId") int showId,
 			@PathVariable("eid") int episodeId, @RequestBody Analysis analysis) {
-		return service.createAnalysis(userId,episodeId,analysis);
+		return service.createAnalysis(userId,showId,episodeId,analysis);
 	}
 	
 	@GetMapping("/api/user/{userid}/episode/{eid}/analysis")
@@ -74,7 +72,7 @@ public class AnalysisController {
 //		return service.getLatestAnalysis();
 //	}
 
-	@GetMapping("api/user/analysedAhowIds/{sid}")
+	@GetMapping("api/user/analysedShowIds/{sid}")
 	public List<Show> getAnalysedShows(@PathVariable("sid") int sid){
 		return service.getAnalysedShows(sid);
 		}

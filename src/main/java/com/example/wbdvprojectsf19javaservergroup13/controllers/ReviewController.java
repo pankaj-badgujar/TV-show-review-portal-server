@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.wbdvprojectsf19javaservergroup13.models.Review;
+import com.example.wbdvprojectsf19javaservergroup13.models.Show;
 import com.example.wbdvprojectsf19javaservergroup13.services.ReviewService;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -43,4 +46,15 @@ public class ReviewController {
 		
 		return service.getReviewForAnalysisByFaculty(fid, aid);
 	}
+
+	@GetMapping("/api/faculty/showsReviewed/{fid}")
+	public List<Show> getShowsReviewdByFaculty(@PathVariable("fid") int fid){
+		return service.getShowsReviewdByFaculty(fid);
+	}
+
+	@GetMapping("/api/faculty/showsToBeReviewed/{fid}")
+	public List<Show> getShowsToBeReviewdByFaculty(@PathVariable("fid") int fid){
+		return service.getShowsToBeReviewdByFaculty(fid);
+	}
+
 }
