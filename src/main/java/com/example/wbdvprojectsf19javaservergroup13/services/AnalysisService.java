@@ -70,8 +70,7 @@ public class AnalysisService {
 	}
 	
 	public void deleteAnalysis(int aid) {
-		
-		analysisRepository.delete(analysisRepository.findAnalysisById(aid));
+		analysisRepository.deleteById(aid);
 	}
 
 	public List<Analysis> getAllAnalysis() {
