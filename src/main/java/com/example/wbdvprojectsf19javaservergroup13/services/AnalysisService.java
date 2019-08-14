@@ -13,6 +13,7 @@ import com.example.wbdvprojectsf19javaservergroup13.models.Student;
 
 import com.example.wbdvprojectsf19javaservergroup13.repositories.AnalysisRepository;
 import com.example.wbdvprojectsf19javaservergroup13.repositories.EpisodeRepository;
+import com.example.wbdvprojectsf19javaservergroup13.repositories.ShowRepository;
 import com.example.wbdvprojectsf19javaservergroup13.repositories.StudentRepository;
 
 @Service
@@ -27,12 +28,20 @@ public class AnalysisService {
 	@Autowired
 	private EpisodeRepository episodeRepository;
 	
-	public Analysis createAnalysis(int userId, int episodeId, Analysis analysis) {
+	@Autowired
+	private ShowRepository showRepository;
+	
+	public Analysis createAnalysis(int userId, int showId, int episodeId, Analysis analysis) {
 		
+		Show show = showRepository.findById(showId).get();
 		Episode episode = episodeRepository.findById(episodeId).get();
 		Student student  = studentRepository.findStudentByUserId(userId);
+		
+		
+		analysis.setShow(show);
 		analysis.setEpisode(episode);
 		analysis.setStudent(student);
+		
 		return analysisRepository.save(analysis);
 	}
 	
