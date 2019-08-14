@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.wbdvprojectsf19javaservergroup13.models.Analysis;
+import com.example.wbdvprojectsf19javaservergroup13.models.Show;
+
 import com.example.wbdvprojectsf19javaservergroup13.models.Episode;
 import com.example.wbdvprojectsf19javaservergroup13.models.Student;
+
 import com.example.wbdvprojectsf19javaservergroup13.repositories.AnalysisRepository;
 import com.example.wbdvprojectsf19javaservergroup13.repositories.EpisodeRepository;
 import com.example.wbdvprojectsf19javaservergroup13.repositories.StudentRepository;
@@ -68,5 +71,13 @@ public class AnalysisService {
 
 	public List<Analysis> getAllAnalysisForEpisode(int episodeId) {
 		return analysisRepository.getAllAnalysisForEpisode(episodeId);
+	}
+
+//  public List<Analysis> getLatestAnalysis(){
+//		return repo.getLatestAnalysis();
+//	}
+
+	public List<Show> getAnalysedShows(int sid){
+		return analysisRepository.getAllShowForStudentId(sid);
 	}
 }

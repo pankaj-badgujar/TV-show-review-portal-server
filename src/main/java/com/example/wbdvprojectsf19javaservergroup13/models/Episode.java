@@ -30,6 +30,7 @@ public class Episode {
 	}
 
 	@OneToMany(mappedBy= "episode")
+	@JsonIgnore
 	private List<Analysis> analyses;
 	
 //	@ManyToOne(mappedBy="episode")

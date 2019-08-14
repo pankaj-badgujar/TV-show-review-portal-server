@@ -29,9 +29,9 @@ public class StudentService {
     return studentRepository.findStudentById(id);
   }
 
-//  public Student findStudentByUser(User user){
-//    return studentRepository.findStudentByUser(user);
-//  }
+  public Student findStudentByUser(User user){
+    return studentRepository.findStudentByUser(user);
+  }
 
   public List<Student> findAllByFaculty(Faculty faculty){
     return studentRepository.findAllByFaculty(faculty);

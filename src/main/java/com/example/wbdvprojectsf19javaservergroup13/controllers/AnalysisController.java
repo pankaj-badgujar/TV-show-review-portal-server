@@ -1,6 +1,9 @@
 package com.example.wbdvprojectsf19javaservergroup13.controllers;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.wbdvprojectsf19javaservergroup13.models.Analysis;
+import com.example.wbdvprojectsf19javaservergroup13.models.Show;
 import com.example.wbdvprojectsf19javaservergroup13.services.AnalysisService;
 
 @RestController
@@ -63,4 +67,16 @@ public class AnalysisController {
 		return service.getAllAnalysisForEpisode(episodeId);
 		
 	}
+
+//	@GetMapping("/api/user/latestAnalysis")
+//	public List<Analysis> getLatestAnalysis() {
+//
+//		return service.getLatestAnalysis();
+//	}
+
+	@GetMapping("api/user/analysedAhowIds/{sid}")
+	public List<Show> getAnalysedShows(@PathVariable("sid") int sid){
+		return service.getAnalysedShows(sid);
+		}
+
 }
