@@ -23,10 +23,11 @@ public class AnalysisController {
 	@Autowired
 	private AnalysisService service;
 	
-	@PostMapping("/api/user/{userId}/episode/{eid}/analysis")
-	public Analysis createAnalysis(@PathVariable("userId") int userId, 
+	@PostMapping("/api/user/{userId}/show/{showId}/episode/{eid}/analysis")
+	public Analysis createAnalysis(@PathVariable("userId") int userId,
+			@PathVariable("showId") int showId,
 			@PathVariable("eid") int episodeId, @RequestBody Analysis analysis) {
-		return service.createAnalysis(userId,episodeId,analysis);
+		return service.createAnalysis(userId,showId,episodeId,analysis);
 	}
 	
 	@GetMapping("/api/user/{userid}/episode/{eid}/analysis")
