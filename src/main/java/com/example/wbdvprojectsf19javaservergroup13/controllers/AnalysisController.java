@@ -49,9 +49,8 @@ public class AnalysisController {
 		return service.updateAnalysis(analysis,aid);
 	}
 	
-	@DeleteMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis/{aid}")
-	public void deleteAnalysis( @PathVariable("aid") int aid) {
-
+	@DeleteMapping("/analysis/{aid}")
+	public void deleteAnalysis(@PathVariable("aid") int aid) {
 		service.deleteAnalysis(aid);
 	}
 	

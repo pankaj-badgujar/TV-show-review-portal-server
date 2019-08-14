@@ -20,4 +20,9 @@ public class EpisodeService {
 	public Episode getEpisodeById(int episodeId) {
 		return repo.findById(episodeId).get();
 	}
+
+	public void deleteEpisode(int episodeId) {
+		repo.deleteById(episodeId);
+		
+	}
 }

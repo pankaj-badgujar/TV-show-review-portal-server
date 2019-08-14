@@ -2,6 +2,8 @@ package com.example.wbdvprojectsf19javaservergroup13.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +21,11 @@ public class ShowController {
 	@PostMapping("/api/show")
 	public Show createShow(@RequestBody Show show) {
 		return showService.createShow(show);
+	}
+	
+	@DeleteMapping("/api/show/{showId}")
+	public void deleteShow(@PathVariable("showId") int showId) {
+		showService.deleteShow(showId);
 	}
 
 }

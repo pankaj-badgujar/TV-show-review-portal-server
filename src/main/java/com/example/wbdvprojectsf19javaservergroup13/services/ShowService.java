@@ -16,4 +16,8 @@ public class ShowService {
 		showRepository.save(show);
 		return show;
 	}
+
+	public void deleteShow(int showId) {
+		showRepository.deleteById(showId);
+	}
 }
