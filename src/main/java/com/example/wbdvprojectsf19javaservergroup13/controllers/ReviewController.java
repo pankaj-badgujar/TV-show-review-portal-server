@@ -46,6 +46,12 @@ public class ReviewController {
 		
 		return service.getReviewForAnalysisByFaculty(fid, aid);
 	}
+	
+	@GetMapping("/api/analysis/{aid}/review")
+	public Review getReviewForAnalysis(@PathVariable("aid") int aid) {
+		
+		return service.getReviewForAnalysis(aid);
+	}
 
 	@GetMapping("/api/faculty/showsReviewed/{fid}")
 	public List<Show> getShowsReviewdByFaculty(@PathVariable("fid") int fid){

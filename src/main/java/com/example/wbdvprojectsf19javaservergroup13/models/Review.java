@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -43,6 +44,16 @@ public class Review {
 	
 	public int getId() {
 		return id;
+	}
+	
+	@Transient
+	public int getUserIdOfFaculty() {
+		return faculty.getUser().getId();
+	}
+	
+	@Transient
+	public String getFacultyFullName() {
+		return faculty.getUser().getFirstName()+ " " + faculty.getUser().getLastName();
 	}
 
 	public void setId(int id) {
