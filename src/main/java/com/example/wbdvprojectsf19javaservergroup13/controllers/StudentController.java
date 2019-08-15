@@ -59,4 +59,9 @@ public class StudentController {
   public   Faculty findFacultyByUserIdOfStudent(@PathVariable("userId") Integer userId){
     return studentService.findFacultyByUserIdOfStudent(userId);
   }
+  
+  @GetMapping("/findStudentByUserId/{userId}")
+  public Student findStudentByUserId(@PathVariable("userId") int userId) {
+	  return studentService.findStudentByUserId(userId);
+  }
 }
