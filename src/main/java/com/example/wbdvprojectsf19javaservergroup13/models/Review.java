@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,6 +19,7 @@ public class Review {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private float grade;
+	private String feedback;
 	
 	@OneToOne
 	@JsonIgnore
@@ -33,9 +35,25 @@ public class Review {
 		this.grade = grade;
 	}
 	
-
+	public Review(int id, float grade, String feedback) {
+		super();
+		this.id = id;
+		this.grade = grade;
+		this.feedback = feedback;
+	}
+	
 	public int getId() {
 		return id;
+	}
+	
+	@Transient
+	public int getUserIdOfFaculty() {
+		return faculty.getUser().getId();
+	}
+	
+	@Transient
+	public String getFacultyFullName() {
+		return faculty.getUser().getFirstName()+ " " + faculty.getUser().getLastName();
 	}
 
 	public void setId(int id) {
@@ -48,6 +66,14 @@ public class Review {
 
 	public void setGrade(float grade) {
 		this.grade = grade;
+	}
+	
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
 
 	public Analysis getAnalysis() {
@@ -66,6 +92,8 @@ public class Review {
 		
 		this.grade = review.grade;
 		this.analysis = review.analysis;
+		this.feedback = review.feedback;
+		this.faculty = review.faculty;
 		return this;
 	}
 

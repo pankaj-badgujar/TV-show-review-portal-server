@@ -31,10 +31,17 @@ public class ReviewService {
 	public Review createReview(Review review, int fid, int aid) {
 		
 		Analysis analysis = arepo.findAnalysisById(aid);
-		Faculty faculty = frepo.findFacultyById(fid);
+		Faculty faculty = frepo.findFacultyByUser(fid);
+		System.out.print(analysis);
+		System.out.print(faculty);
+		if (analysis != null && faculty != null) {
 		review.setAnalysis(analysis);
 		review.setFaculty(faculty);
 		return repo.save(review);
+		}
+		else {
+			return null;
+		}
 	}
 	
 	public Review getReviewById(int rid) {
@@ -47,10 +54,15 @@ public class ReviewService {
 		return repo.getReviewForAnalysisIdAndFacultyId(aId, fId);
 	}
 	
+	public Review getReviewForAnalysis(int aid) {
+		
+		return repo.getReviewForAnalysis(aid);
+	}
+	
 	public Review updateReview(Review review, int rid) {
 		
 		Review old = repo.findReviewsById(rid);
-		old.set(review);
+		old.setFeedback(review.getFeedback());
 		repo.save(old);
 		return repo.findReviewsById(rid);
 	}
