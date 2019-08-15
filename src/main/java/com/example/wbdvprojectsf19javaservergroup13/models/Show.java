@@ -12,11 +12,9 @@ import javax.persistence.Table;
 @Table(name="shows")
 public class Show {
 
+ 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
-
-  private int tvShowId;
 
   private String img;
 
@@ -34,13 +32,6 @@ public class Show {
     this.id = id;
   }
 
-  public int getTvShowId() {
-    return tvShowId;
-  }
-
-  public void setTvShowId(int tvShowId) {
-    this.tvShowId = tvShowId;
-  }
 
   public String getImg() {
     return img;

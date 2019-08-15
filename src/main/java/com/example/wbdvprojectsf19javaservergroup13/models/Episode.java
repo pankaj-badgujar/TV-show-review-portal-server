@@ -21,9 +21,14 @@ public class Episode {
 	
 	private int showId;
 	
+	public String episodeName;
+
+	
 	public int getShowId() {
 		return showId;
 	}
+	
+
 
 	public void setShowId(int showId) {
 		this.showId = showId;
@@ -75,6 +80,15 @@ public class Episode {
 		this.analyses = episode.analyses;
 		this.showId = episode.showId;
 		return this;
+	}
+	
+
+	public String getEpisodeName() {
+		return episodeName;
+	}
+
+	public void setEpisodeName(String episodeName) {
+		this.episodeName = episodeName;
 	}
 	
 	
