@@ -43,10 +43,10 @@ public class AnalysisController {
 //
 
 	
-	@PutMapping("/api/user/{userid}/tvshow/{showid}/episode/{eid}/analysis/{aid}")
-	public Analysis updateAnalysis(@RequestBody Analysis analysis, @PathVariable("aid") int aid) {
-		
-		return service.updateAnalysis(analysis,aid);
+	@PutMapping("/analysis/{aid}/content/{content}")
+	public Analysis updateAnalysis(@PathVariable("aid") int aid, 
+			@PathVariable("content") String content) {
+		return service.updateAnalysis(aid, content);
 	}
 	
 	@DeleteMapping("/analysis/{aid}")
