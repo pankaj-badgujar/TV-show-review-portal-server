@@ -39,6 +39,8 @@ public class UserService {
 		userToBeUpdated.setLastName(user.getLastName());
 		userToBeUpdated.setUsername(user.getUsername());
 		userToBeUpdated.setPassword(user.getPassword());
+		userToBeUpdated.setEmail(user.getEmail());
+		userToBeUpdated.setPhoneNumber(user.getPhoneNumber());
 		
 		userRepository.save(userToBeUpdated);
 		return userToBeUpdated;

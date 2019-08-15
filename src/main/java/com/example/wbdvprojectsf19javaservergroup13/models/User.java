@@ -15,6 +15,8 @@ public class User {
 	private String lastName;
 	private String username;
 	private String password;
+	private Long phoneNumber;
+	private String email;
 	private Role role;
 	
 	public int getId() {
@@ -59,5 +61,20 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
+
+	public Long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(Long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }
