@@ -22,7 +22,6 @@ public class Review {
 	private String feedback;
 	
 	@OneToOne
-	@JsonIgnore
 	private Analysis analysis;
 
 	@ManyToOne

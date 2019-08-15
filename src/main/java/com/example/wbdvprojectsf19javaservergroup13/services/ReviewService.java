@@ -84,4 +84,13 @@ public class ReviewService {
 		showAnalysisList.removeAll(showAnlysedList);
 		return showAnalysisList;
 	}
+
+	public List<Review> findAllReviews() {
+		
+		return repo.findAllReviews();
+	}
+
+	public List<Review> findAllReviewsByUserId(int userId) {
+		return repo.findAllReviewsByUserId(userId);
+	}
 }
