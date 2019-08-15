@@ -61,12 +61,12 @@ public class AnalysisService {
 		return analysisRepository.getAllAnalysisForStudentId(uid);
 	}
 	
-	public Analysis updateAnalysis(Analysis analysis, int aid) {
+	public Analysis updateAnalysis(int aid, String content) {
 		
-		Analysis old = analysisRepository.findAnalysisById(aid);
-		old.set(analysis);
-		analysisRepository.save(old);
-		return analysisRepository.findAnalysisById(aid);
+		Analysis analysisToBeUpdated = analysisRepository.findAnalysisById(aid);
+		analysisToBeUpdated.setContent(content);
+		analysisRepository.save(analysisToBeUpdated);
+		return analysisToBeUpdated;
 	}
 	
 	public void deleteAnalysis(int aid) {
