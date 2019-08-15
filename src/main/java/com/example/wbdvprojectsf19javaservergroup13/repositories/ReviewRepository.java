@@ -22,4 +22,10 @@ public interface ReviewRepository extends CrudRepository<Review, Integer> {
 
 	@Query("select review From Review review where review.analysis.id=:aid")
 	public Review getReviewForAnalysis(@Param("aid") Integer aid);
+
+	@Query("select review From Review review")
+	public List<Review> findAllReviews();
+
+	@Query("select review from Review review where review.faculty.user.id =:userId")
+	public List<Review> findAllReviewsByUserId(@Param("userId") int userId);
 }
